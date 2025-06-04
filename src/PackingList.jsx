@@ -1,9 +1,11 @@
-export default function PackingList(){
+export default function PackingList({item, amount}){
+    const itemAdded = []
     return(
         <ul className="list">
             <li>
             <input type="checkbox"></input>
-            5 passports
+            {amount} 
+            {item}
             <button>❌</button>
             </li>
         </ul>
