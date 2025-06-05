@@ -7,13 +7,26 @@ import PackingList from './PackingList'
 import Stats from './Stats'
 
 function App() {
+  const [itemList, setItemList] = useState([])
+
+  function addItem(item){
+    setItemList([...itemList, item])
+  }
+
+  function handleToggle(id){
+    setItemList((itemList)=>
+        itemList.map((item)=>
+          item.id === id ? {...item, packed: !item.packed} : item
+        )  
+    )}
+  
   return (
-    <>
+    <div className="app">
       <Logo/>
-      <Form/>
-      <PackingList/>
+      <Form onAddItem={addItem}/>
+      <PackingList itemList={itemList} onHandleToggle={handleToggle}/>
       <Stats/>
-    </>
+    </div>
   )
 }
 

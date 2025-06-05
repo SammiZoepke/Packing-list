@@ -1,16 +1,12 @@
 import Item from "./Item"
 
+export default function PackingList({itemList, onHandleToggle}){
 
-export default function PackingList(){
-    const initialItems = [
-  {id:1, description:"Passports", quantity:2, packed: false},
-  {id:2, description:"Shoes", quantity:1, packed: false}
-]
     return(
         <div className="list">
         <ul>
-            {initialItems.map((item)=>
-            <Item item={item}/>
+            {itemList.map((item)=>
+            <Item item={item} key={item.id} onHandleToggle={onHandleToggle}/>
             )}
             
         </ul>
