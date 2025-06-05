@@ -6,17 +6,12 @@ import Form from './Form'
 import PackingList from './PackingList'
 import Stats from './Stats'
 
-
 function App() {
-  const [item, setItem] = useState("")
-  const [amount, setAmount] = useState("1")
-
-
   return (
     <>
       <Logo/>
-      <Form item={item} amount={amount} onAmount={setAmount} onItem={setItem}/>
-      <PackingList item={item} amount={amount}/>
+      <Form/>
+      <PackingList/>
       <Stats/>
     </>
   )
