@@ -7,7 +7,7 @@ export default function Form({onAddItem}){
     function handleSubmit(e){
         e.preventDefault()
         if (!description) return;
-        const newItem = {description, amount, packed: false}
+        const newItem = {description, amount, packed: false, id:Date.now()}
         onAddItem(newItem)
         setDescription("")
         setAmount(1)

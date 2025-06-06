@@ -11,21 +11,31 @@ function App() {
 
   function addItem(item){
     setItemList([...itemList, item])
+    console.log(itemList)
   }
 
   function handleToggle(id){
-    setItemList((itemList)=>
-        itemList.map((item)=>
-          item.id === id ? {...item, packed: !item.packed} : item
-        )  
-    )}
+    setItemList(itemList=>
+      itemList.map(item=>
+        item.id === id ? {...item, packed: !item.packed} : item
+      )
+    )
+  }
+
+  function handleDelete(id){
+    setItemList(itemList=>
+      itemList.filter(item =>
+        item.id !== id
+      )
+    )
+  }
   
   return (
     <div className="app">
       <Logo/>
       <Form onAddItem={addItem}/>
-      <PackingList itemList={itemList} onHandleToggle={handleToggle}/>
-      <Stats/>
+      <PackingList itemList={itemList} onHandleToggle={handleToggle} onDelete={handleDelete}/>
+      <Stats itemList={itemList}/>
     </div>
   )
 }
