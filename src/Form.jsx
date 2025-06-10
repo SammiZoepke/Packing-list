@@ -1,25 +1,23 @@
 import { useState } from "react"
 
-export default function Form({onAddItem}){
+export default function Form({onAdd}){
     const [description, setDescription] = useState("")
-    const [amount, setAmount] = useState(1)
-
+    const [quantity, setQuantity] = useState(1)
+    const item = {id: Date.now(), description, quantity, packed: false}
+    
     function handleSubmit(e){
         e.preventDefault()
-        if (!description) return;
-        const newItem = {description, amount, packed: false, id:Date.now()}
-        onAddItem(newItem)
+        if (!description) return
+        onAdd(item)
         setDescription("")
-        setAmount(1)
+        setQuantity(1)
     }
-
+   
     return(
         <form className="add-form" onSubmit={handleSubmit}>
             <label>What do you need for your trip?</label>
-            <select value={amount} onChange={(e)=>setAmount(Number(e.target.value))}>
-                {[...Array(10)].map((_,i)=>(
-                    <option value={i+1}>{i+1}</option>
-                ))}
+            <select value={quantity} onChange={(e)=>setQuantity(e.target.value)}>
+                {Array.from({length:10},(_, i)=><option key={i} value={i+1}>{i+1}</option>)}
             </select>
             <input type='text' value={description} onChange={(e)=>setDescription(e.target.value)}></input>
             <button>Add</button>

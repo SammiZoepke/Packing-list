@@ -9,33 +9,19 @@ import Stats from './Stats'
 function App() {
   const [itemList, setItemList] = useState([])
 
-  function addItem(item){
-    setItemList([...itemList, item])
-    console.log(itemList)
+  function handleAdd(item){
+    setItemList(itemList=>
+      [...itemList, item])
+      console.log(itemList)
   }
 
-  function handleToggle(id){
-    setItemList(itemList=>
-      itemList.map(item=>
-        item.id === id ? {...item, packed: !item.packed} : item
-      )
-    )
-  }
-
-  function handleDelete(id){
-    setItemList(itemList=>
-      itemList.filter(item =>
-        item.id !== id
-      )
-    )
-  }
   
   return (
     <div className="app">
       <Logo/>
-      <Form onAddItem={addItem}/>
-      <PackingList itemList={itemList} onHandleToggle={handleToggle} onDelete={handleDelete}/>
-      <Stats itemList={itemList}/>
+      <Form onAdd={handleAdd}/>
+      <PackingList itemList={itemList}/>
+      <Stats/>
     </div>
   )
 }
