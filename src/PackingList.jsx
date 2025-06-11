@@ -1,11 +1,11 @@
 import Item from "./Item"
 
-export default function PackingList({itemList}){
+export default function PackingList({itemList, onToggle}){
     return(
         <div className="list">
         <ul>
             {itemList.map((item)=>(
-            <Item item={item}/>))}
+            <Item item={item} onToggle={onToggle}/>))}
         </ul>
         
         <div className="actions">

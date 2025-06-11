@@ -15,12 +15,20 @@ function App() {
       console.log(itemList)
   }
 
+  function handleToggle(id){
+    setItemList((itemList) =>
+      itemList.map((item) =>
+         item.id === id ? {...item, packed:!item.packed}: item
+      )
+    )
+  }
+
   
   return (
     <div className="app">
       <Logo/>
       <Form onAdd={handleAdd}/>
-      <PackingList itemList={itemList}/>
+      <PackingList itemList={itemList} onToggle={handleToggle}/>
       <Stats/>
     </div>
   )
