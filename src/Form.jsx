@@ -3,11 +3,12 @@ import { useState } from "react"
 export default function Form({onAdd}){
     const [description, setDescription] = useState("")
     const [quantity, setQuantity] = useState(1)
-    const item = {id: Date.now(), description, quantity, packed: false}
+    
     
     function handleSubmit(e){
         e.preventDefault()
         if (!description) return
+        const item = {id: Date.now(), description, quantity, packed: false}
         onAdd(item)
         setDescription("")
         setQuantity(1)

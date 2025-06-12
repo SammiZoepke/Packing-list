@@ -12,7 +12,6 @@ function App() {
   function handleAdd(item){
     setItemList(itemList=>
       [...itemList, item])
-      console.log(itemList)
   }
 
   function handleToggle(id){
@@ -21,15 +20,25 @@ function App() {
          item.id === id ? {...item, packed:!item.packed}: item
       )
     )
+     console.log(itemList)
   }
 
-  
+  function handleDelete(id){
+    setItemList((itemList)=>
+    itemList.filter((item)=>
+    item.id !== id)
+  )
+  }
+
+  function handleClearList(){
+    setItemList([])
+  }
   return (
     <div className="app">
       <Logo/>
       <Form onAdd={handleAdd}/>
-      <PackingList itemList={itemList} onToggle={handleToggle}/>
-      <Stats/>
+      <PackingList itemList={itemList} onToggle={handleToggle} onDelete={handleDelete} onClear={handleClearList}/>
+      <Stats itemList={itemList}/>
     </div>
   )
 }
