@@ -14,7 +14,7 @@ export default function PackingList({itemList, onToggle, onDelete, onClear}){
             {sortedItems.map((item)=>(
             <Item item={item} onToggle={onToggle} onDelete={onDelete} key={item.id}/>))}
         </ul>
-        
+        <q></q>
         <div className="actions">
         <select value={sortBy} onChange={(e)=>setSortBy(e.target.value)}>
             <option value="input">Sort by input order</option>
